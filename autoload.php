@@ -32,9 +32,23 @@ class ImageCompareAutoloader
     public static function register($prepend = false)
     {
         if (PHP_VERSION_ID < 50300) {
-            spl_autoload_register(array(__CLASS__, 'autoload'));
+            spl_autoload_register(
+                function ($class)
+                {
+                    if (is_file($file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR , $class).'.php')) {
+                        require $file;
+                    }
+                }
+            );
         } else {
-            spl_autoload_register(array(__CLASS__, 'autoload'), true, $prepend);
+            spl_autoload_register(
+                function ($class)
+                {
+                    if (is_file($file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR , $class).'.php')) {
+                        require $file;
+                    }
+                }
+            , true, $prepend);
         }
     }
     /**
