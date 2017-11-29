@@ -31,24 +31,13 @@ class ImageCompareAutoloader
 
     public static function register($prepend = false)
     {
+        echo "register";
+        echo PHP_VERSION_ID;
+        exit();
         if (PHP_VERSION_ID < 50300) {
-            spl_autoload_register(
-                function ($class)
-                {
-                    if (is_file($file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR , $class).'.php')) {
-                        require $file;
-                    }
-                }
-            );
+            spl_autoload_register(array(__CLASS__, 'autoload'));
         } else {
-            spl_autoload_register(
-                function ($class)
-                {
-                    if (is_file($file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR , $class).'.php')) {
-                        require $file;
-                    }
-                }
-            , true, $prepend);
+            spl_autoload_register(array(__CLASS__, 'autoload'), true, $prepend);
         }
     }
     /**
@@ -65,6 +54,7 @@ class ImageCompareAutoloader
         if (is_file($file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR , $class).'.php')) {
             require $file;
         }
+        exit();
     }
 }
 
