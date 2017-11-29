@@ -100,7 +100,7 @@ cleanImage('demo_inputs/11');
 cleanImage('demo_inputs/12');
 
 // Load images
-$image = Image::fromFile('demo_inputs/image.png');
+$sketch = Image::fromFile('demo_inputs/image.png');
 $image1 = Image::fromFile('demo_inputs/1.png');
 $image2 = Image::fromFile('demo_inputs/2.png');
 $image3 = Image::fromFile('demo_inputs/3.png');
@@ -116,51 +116,51 @@ $image12 = Image::fromFile('demo_inputs/12.png');
 
 $Images =  array(
 	'image1' => (object) [
-		'diff' => $image->difference($image1),
+		'diff' => $sketch->difference($image1),
 		'src' => 'demo_inputs/1.jpg'
 	],
 	'image2' => (object) [
-		'diff' => $image->difference($image2),
+		'diff' => $sketch->difference($image2),
 		'src' => 'demo_inputs/2.jpg'
 	],
 	'image3' => (object) [
-		'diff' => $image->difference($image3),
+		'diff' => $sketch->difference($image3),
 		'src' => 'demo_inputs/3.jpg'
 	],
 	'image4' => (object) [
-		'diff' => $image->difference($image4),
+		'diff' => $sketch->difference($image4),
 		'src' => 'demo_inputs/4.jpg'
 	],
 	'image5' => (object) [
-		'diff' => $image->difference($image5),
+		'diff' => $sketch->difference($image5),
 		'src' => 'demo_inputs/5.jpg'
 	],
 	'image6' => (object) [
-		'diff' => $image->difference($image6),
+		'diff' => $sketch->difference($image6),
 		'src' => 'demo_inputs/6.jpg'
 	],
 	'image7' => (object) [
-		'diff' => $image->difference($image7),
+		'diff' => $sketch->difference($image7),
 		'src' => 'demo_inputs/7.jpg'
 	],
 	'image8' => (object) [
-		'diff' => $image->difference($image8),
+		'diff' => $sketch->difference($image8),
 		'src' => 'demo_inputs/8.jpg'
 	],
 	'image9' => (object) [
-		'diff' => $image->difference($image9),
+		'diff' => $sketch->difference($image9),
 		'src' => 'demo_inputs/9.jpg'
 	],
 	'image10' => (object) [
-		'diff' => $image->difference($image10),
+		'diff' => $sketch->difference($image10),
 		'src' => 'demo_inputs/10.jpg'
 	],
 	'image11' => (object) [
-		'diff' => $image->difference($image11),
+		'diff' => $sketch->difference($image11),
 		'src' => 'demo_inputs/11.jpg'
 	],
 	'image12' => (object) [
-		'diff' => $image->difference($image12),
+		'diff' => $sketch->difference($image12),
 		'src' => 'demo_inputs/12.jpg'
 	]
 );
@@ -172,7 +172,7 @@ function cmp($a, $b)
 
 usort($Images, "cmp");
 
-echo "<section><img class='main' src='demo_inputs/8.jpg'>";
+echo "<section><img class='main' src='demo_inputs/image.jpg'>";
 foreach($Images as $image) {
 	echo "<div><img src ='" . $image->src . "'><span>" . $image->diff . "</span></div>";
 }

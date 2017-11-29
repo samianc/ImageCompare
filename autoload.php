@@ -51,7 +51,6 @@ class ImageCompareAutoloader
         if (is_file($file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR , $class).'.php')) {
             require $file;
         }
-        exit();
     }
 }
 
