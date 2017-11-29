@@ -67,15 +67,14 @@ function cleanImage($path) {
     // imagedestroy($imageObject);
 	imagepng($imageObject, $path . '.png');
 }
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if(isset($_GET['image'])) {
-	echo $_GET['image'];
-	exit();
 	$encoded_image = explode(",", $_GET['image'])[1];
 	$decoded_image = base64_decode($encoded_image);
-	file_put_contents("demo_inputs/image.jpg", $decoded_image);
-	echo "<img src='demo_inputs/image.jpg'>";
-	exit();
+	$source = imagecreatefromstring($decoded_image);
+	$imageSave = imagejpeg($source,'demo_inputs/image.jpg',100);
+	imagedestroy($source);
 }
 cleanImage('demo_inputs/image');
 cleanImage('demo_inputs/1');
