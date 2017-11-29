@@ -1,6 +1,7 @@
 <?php
 set_time_limit(800);
-ini_set('memory_limit', '-1');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // Allow from any origin
 if (isset($_SERVER['HTTP_ORIGIN'])) {
 	header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -77,8 +78,6 @@ function cleanImage($path) {
     // imagedestroy($imageObject);
 	imagepng($imageObject, $path . '.png');
 }
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 if(isset($_GET['image'])) {
 	$encoded_image = explode(",", $_GET['image'])[1];
 	$decoded_image = base64_decode($encoded_image);
