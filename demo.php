@@ -2,6 +2,7 @@
 
 require 'autoload.php';
 
+set_time_limit(800);
 // Load the mask
 
 $mask = Image::fromFile('demo_inputs/mask.png');

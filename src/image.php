@@ -73,8 +73,10 @@ Class Image {
         imagedestroy($this->img);
     }
 
-    public function difference(Image $comp, $options = self::COMP_COLOR | self::COMP_FRAGMENT | self::COMP_HASH)
+    // public function difference(Image $comp, $options = self::COMP_COLOR | self::COMP_FRAGMENT | self::COMP_HASH)
+    public function difference(Image $comp, $options = self::COMP_HASH)
     {
+        $options = self::COMP_COLOR | self::COMP_FRAGMENT | self::COMP_HASH;
         // Hash compare
         if ($options & self::COMP_HASH && $this->hash() == $comp->hash()) {
             return 1;
@@ -84,7 +86,6 @@ Class Image {
         if ($comp->size() != $this->size()) {
             $comp = $comp->resize($this->size());
         }
-
         list($icComp, $ocComp) = ImagePixelMatrix::fromImage($comp)->getHotSpots();
         list($icOrg, $ocOrg) = ImagePixelMatrix::fromImage($this)->getHotSpots();
 
@@ -114,8 +115,10 @@ Class Image {
         return $deviation * $factor;
     }
 
-    public function compare(Image $comp, $tolerance = 20, $options = self::COMP_COLOR | self::COMP_FRAGMENT | self::COMP_HASH) 
+    // public function compare(Image $comp, $tolerance = 20, $options = self::COMP_COLOR | self::COMP_FRAGMENT | self::COMP_HASH) 
+    public function compare(Image $comp, $tolerance = 20, $options = self::COMP_COLOR) 
     {
+        $options = self::COMP_COLOR | self::COMP_FRAGMENT | self::COMP_HASH;
         $tolerance /= 100;
         return $this->difference($comp, $options) > (1 - $tolerance);
     }
