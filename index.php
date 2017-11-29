@@ -20,7 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $rustart = getrusage();
 	
-require 'autoload.php';
+require 'src/boundary.php';
+require 'src/color.php';
+require 'src/crawler.php';
+require 'src/crawleroutline.php';
+require 'src/crawleroutlinecollection.php';
+require 'src/image.php';
+require 'src/imagecollection.php';
+require 'src/imagepixelmatrix.php';
+require 'src/pixel.php';
+require 'src/point.php';
 
 set_time_limit(800);
 ini_set('memory_limit', '-1');
