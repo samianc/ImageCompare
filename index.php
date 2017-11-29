@@ -1,4 +1,6 @@
 <?php
+set_time_limit(800);
+ini_set('memory_limit', '-1');
 // Allow from any origin
 if (isset($_SERVER['HTTP_ORIGIN'])) {
 	header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -31,8 +33,6 @@ require 'src/imagepixelmatrix.php';
 require 'src/pixel.php';
 require 'src/point.php';
 
-set_time_limit(800);
-ini_set('memory_limit', '-1');
 function resize_image($file, $w, $h, $crop=FALSE) {
     list($width, $height) = getimagesize($file);
     $r = $width / $height;
