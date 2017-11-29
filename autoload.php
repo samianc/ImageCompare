@@ -34,7 +34,7 @@ class ImageCompareAutoloader
         if (PHP_VERSION_ID < 50300) {
             spl_autoload_register(array(__CLASS__, 'autoload'));
         } else {
-            spl_autoload_register(array(__CLASS__, 'autoload'), true);
+            spl_autoload_register(array(__CLASS__, 'autoload'), true, $prepend);
         }
     }
     /**
