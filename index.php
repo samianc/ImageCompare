@@ -68,7 +68,7 @@ function resize_image($file, $w, $h, $crop=FALSE) {
 function cleanImage($path) {
 	$path = explode('.', $path)[0];
 	// Load the mask
-	$imageObject = resize_image($path . '.jpg', 30, 30);
+	$imageObject = resize_image($path . '.jpg', 40, 40);
 	// $cropped = imagecropauto($imageObject, IMG_CROP_DEFAULT);
     // if ($cropped !== false) { // in case a new image resource was returned
     //     echo "=> Cropping needed\n";
