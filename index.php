@@ -78,16 +78,10 @@ function cleanImage($path) {
     // imagedestroy($imageObject);
 	imagepng($imageObject, $path . '.png');
 }
-var_dump($_POST);
-var_dump($_FILES);
-exit();
-if(isset($_GET['image'])) {
-	$encoded_image = explode(",", $_GET['image'])[1];
-	$decoded_image = base64_decode($encoded_image);
-	$source = imagecreatefromstring($decoded_image);
-	$imageSave = imagejpeg($source,'demo_inputs/image.jpg',100);
-	imagedestroy($source);
+if(!isset($_FILES['image'])) {
+	exit();
 }
+file_put_contents('demo_inputs/image.jpg', $_FILES['image']);
 cleanImage('demo_inputs/image');
 cleanImage('demo_inputs/1');
 cleanImage('demo_inputs/2');
