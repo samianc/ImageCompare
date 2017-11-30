@@ -169,48 +169,21 @@ function cmp($a, $b)
 
 usort($Images, "cmp");
 
-echo "<section><img class='main' src='demo_inputs/image.jpg'>";
-foreach($Images as $image) {
-	echo "<div><img src ='" . $image->src . "'><span>" . $image->diff . "</span></div>";
-}
-echo "</section>";
-
+// echo "<section><img class='main' src='demo_inputs/image.jpg'>";
+// foreach($Images as $image) {
+// 	echo "<div><img src ='" . $image->src . "'><span>" . $image->diff . "</span></div>";
+// }
+// echo "</section>";
+echo json_encode($Images);
 // Script end
 function rutime($ru, $rus, $index) {
     return ($ru["ru_$index.tv_sec"]*1000 + intval($ru["ru_$index.tv_usec"]/1000))
      -  ($rus["ru_$index.tv_sec"]*1000 + intval($rus["ru_$index.tv_usec"]/1000));
 }
 
-$ru = getrusage();
-echo "<b>This process used " . rutime($ru, $rustart, "utime") .
-    " ms for its computations</b>";
-echo "<b>It spent " . rutime($ru, $rustart, "stime") .
-	" ms in system calls</b>";
+// $ru = getrusage();
+// echo "<b>This process used " . rutime($ru, $rustart, "utime") .
+//     " ms for its computations</b>";
+// echo "<b>It spent " . rutime($ru, $rustart, "stime") .
+// 	" ms in system calls</b>";
 ?>
-<style>
-section {
-	width: 100%;
-	display: table;
-}
-div {
-	display: table;
-	float:left;
-    width: 10%;
-}
-img:not(.main) {
-	width: 100%;
-	height: 130px;
-}
-img.main {
-	max-width: 25%;
-	display: table;
-	margin: auto;
-}
-span {
-    display: table;
-    margin-top: 20px;
-}
-b {
-	font-size: 20px;
-}
-</style>
