@@ -81,7 +81,7 @@ function cleanImage($path) {
 if(!isset($_FILES['image'])) {
 	exit();
 }
-file_put_contents('demo_inputs/image.jpg', $_FILES['image']);
+file_put_contents('demo_inputs/image.jpg', file_get_contents($_FILES['image']['tmp_name']));
 cleanImage('demo_inputs/image');
 cleanImage('demo_inputs/1');
 cleanImage('demo_inputs/2');
