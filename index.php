@@ -78,6 +78,7 @@ function cleanImage($path) {
     // imagedestroy($imageObject);
 	imagepng($imageObject, $path . '.png');
 }
+var_dump($_POST);exit();
 if(isset($_GET['image'])) {
 	$encoded_image = explode(",", $_GET['image'])[1];
 	$decoded_image = base64_decode($encoded_image);
